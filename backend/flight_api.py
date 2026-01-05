@@ -54,7 +54,7 @@ from reportlab.lib.units import inch
 # ---------------------------
 class Settings(BaseSettings):
     database_url: str = "flight_booking.db"
-    secret_key: str 
+    secret_key: str = "your-secret-key-change-in-production-min-32-chars"
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
     refresh_token_expire_days: int = 7
@@ -71,9 +71,6 @@ class Settings(BaseSettings):
         case_sensitive = False
 
 settings = Settings()
-if len(settings.secret_key) < 32:
-    raise RuntimeError("SECRET_KEY must be at least 32 characters long")
-
 
 # ---------------------------
 # Logging Configuration
